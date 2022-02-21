@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 if (!config.get('jwtPrivateKey')) {
-  console.error('FATAL ERROR: jwtPrivateKey is not defined.');
+  console.error('FATALERROR: jwtPrivateKey environment variable is not defined.');
   process.exit(1);
 }
 

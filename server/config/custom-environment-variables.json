@@ -1,0 +1,8 @@
+{
+  "jwtPrivateKey": "privatekey_sso_ad",
+  "PORT":"PORT",
+  "url"':"ldap://dc.domain.com",
+  "baseDN": "dc=domain,dc=com",
+  "ad_username": "username@domain.com",
+  "ad_password": "password" 
+}
