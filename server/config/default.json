@@ -1,3 +1,8 @@
 {
-  "jwtPrivateKey": ""
+  "jwtPrivateKey": "set",
+  "PORT":"PORT",
+  "ad_url":"ldap://dc.domain.com",
+  "ad_baseDN": "dc=domain,dc=com",
+  "ad_username": "username@domain.com",
+  "ad_password": "password" 
 }

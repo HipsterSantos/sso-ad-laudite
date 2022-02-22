@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 50
   },
+  adName:{
+    type:String,
+    required:true,
+  },
   email: {
     type: String,
     required: true,
@@ -26,7 +30,7 @@ const userSchema = new mongoose.Schema({
   isAdmin: Boolean
 });
 
-userSchema.methods.generateAuthToken = function() { 
+userSchema.methods.genToken = function() { 
   const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'));
   return token;
 }

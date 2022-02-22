@@ -1,8 +1,10 @@
+require('dotenv');
 const config = require('config');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
 const auth = require('./routes/auth');
+const users = require('./routes/users');
 const express = require('express');
 const app = express();
 
@@ -13,10 +15,10 @@ if (!config.get('jwtPrivateKey')) {
 
 mongoose.connect('mongodb://localhost/sson-auth')
   .then(() => console.log('Connected to mongodb database'))
-  .catch(err => console.error('Could not connect to MongoDB...'));
+  .catch(err => console.error('Could not connect to MongoDB...',err));
 
 app.use(express.json());
-app.use('/api/users', users);
+app.use('/api/users',users);
 app.use('/api/auth', auth);
 
 const port = process.env.PORT || 3000;

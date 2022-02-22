@@ -5,24 +5,42 @@ const {User} = require('../models/user');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+const activeDirectory = require('../utils/adconfig');
 
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
+  
   const { error } = validate(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
+  const {username,password} = req.body.username;
 
-  let user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send('Invalid email or password.');
+  activeDirectory.authenticate(username, password,async function(err, auth) {
+    if (err) {
+      console.log('ERROR: '+JSON.stringify(err));
+      return res.status(400).send('This username is invalid');
+    }
+    
+    if (auth) {
+      console.log('Authenticated!');
+      const user = new User({
+        adName:username,
+        password,
+      });
 
-  const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) return res.status(400).send('Invalid email or password.');
+      await user.save();
+      const token = user.generateAuthToken();
+      res.send(token);
+    }
 
-  const token = user.generateAuthToken();
-  res.send(token);
+    else {      
+      return res.status(401).send('Authentication failed!');
+    }
+  });
+  
 });
 
 function validate(req) {
   const schema = {
-    email: Joi.string().min(5).max(255).required().email(),
+    username: Joi.string().min(5).max(255).required(),
     password: Joi.string().min(5).max(255).required()
   };
 
