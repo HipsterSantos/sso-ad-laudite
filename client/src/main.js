@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
+import * as appRouter from './router/appRouter';
+import store from './store/index';
 
-Vue.config.productionTip = false
-
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+createApp(App)
+.use(appRouter.routeConfig)
+.use(store)
+.mount('#app')
+;
