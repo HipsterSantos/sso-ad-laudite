@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h4>Login Form</h4>
+    <h4>Login AD users</h4>
     <form>
       <div class="mb-3">
-        <label for="txtuserName" class="form-label">User Name</label>
+        <label for="txtuserName" class="form-label">User name(AD)</label>
         <input
           type="text"
           class="form-control"
@@ -12,7 +12,7 @@
           v-model="username"/>
       </div>
       <div class="mb-3">
-        <label for="txtPassword" class="form-label">Password</label>
+        <label for="txtPassword" class="form-label">Password (AD)</label>
         <input
           type="password"
           class="form-control"

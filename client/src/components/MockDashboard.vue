@@ -1,11 +1,12 @@
 <template>
     <div>
-        <h1>Dashboard Page</h1>
+        <h1>Dashboard ,Logged AD users</h1>
+        <p>In this dashboard is where all AD user will be redirected after get signed in</p>
         <div>
-            UserName -- {{gettersAuthData.userName}}
+            UserName: {{gettersAuthData.userName}}
         </div>
         <div>
-            Id  -- {{gettersAuthData.userId}}
+            Id:  {{gettersAuthData.userId}}
         </div>
     </div>
 </template>
