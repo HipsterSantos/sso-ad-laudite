@@ -27,6 +27,7 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex';
+import * as axios from 'axios';
 export default {
     data(){
         return{

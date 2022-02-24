@@ -1,8 +1,8 @@
 {
   "jwtPrivateKey": "set",
   "PORT":"PORT",
-  "ad_url":"ldap://dc.domain.com",
-  "ad_baseDN": "dc=domain,dc=com",
-  "ad_username": "username@domain.com",
-  "ad_password": "password" 
+  "ad_url":"ldap://santos.onmicrosoft.com",
+  "ad_baseDN": "dc=santos.onmicrosoft.com,dc=com",
+  "ad_username": "",
+  "ad_password": "" 
 }

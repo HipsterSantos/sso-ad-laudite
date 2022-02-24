@@ -8,6 +8,8 @@ const users = require('./routes/users');
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 if (!config.get('jwtPrivateKey')) {
   console.error('FATALERROR: jwtPrivateKey environment variable is not defined.');
   process.exit(1);
@@ -20,6 +22,10 @@ mongoose.connect('mongodb://localhost/sson-auth')
 app.use(express.json());
 app.use('/api/users',users);
 app.use('/api/auth', auth);
+app.get('/api', async(req,res)=>{
+
+  console.log('Im getting called');
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on port ${port}...`));

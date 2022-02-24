@@ -38,7 +38,7 @@ const getters = {
     saveTokenData(state, data) {
    
       localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("refresh_token", data.refresh_token);
+      localStorage.setItem("refresh_token", data?.refresh_token);
    
       const jwtDecodedValue = jwtDecrypt(data.access_token);
       const newTokenData = {
